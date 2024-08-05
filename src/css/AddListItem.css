@@ -1,6 +1,8 @@
 .form {
     background-color: blue;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     padding: 10%;
+    max-width: 100%;
 }

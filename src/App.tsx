@@ -14,10 +14,10 @@ export function App() {
   }
 
   return (
-    <>
-      <h1>Todo-list</h1>
+    <div className="content">
+      <h1 className="header">Todo-list</h1>
       <AddListItem addItem={addItemToList}/>
       <List items={items} listItemAction={removeItemFromList}/>
-    </>
+    </div>
   );
 }

@@ -35,9 +35,20 @@ export function AddListItem({addItem}: AddListItemProps): ReactElement {
     }
 
     return <form className="form" onSubmit={handleOnSubmit}>
-        <input type="text" placeholder="Task name" value={itemName} onChange={handleOnChangeName}/>
-        <textarea placeholder="Task description" value={itemDescription} onChange={handleOnChangeDescription}/>
-        <input type="text" placeholder="Author" value={itemAuthor} onChange={handleOnChangeAuthor}/>
+        <input
+            type="text"
+            placeholder="Task name"
+            value={itemName}
+            onChange={handleOnChangeName}/>
+        <textarea
+            placeholder="Task description"
+            value={itemDescription}
+            onChange={handleOnChangeDescription}/>
+        <input
+            type="text"
+            placeholder="Author"
+            value={itemAuthor}
+            onChange={handleOnChangeAuthor}/>
         <button type="submit">Add item</button>
     </form>
 }

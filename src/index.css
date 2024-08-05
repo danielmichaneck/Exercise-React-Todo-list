@@ -4,4 +4,33 @@
 
 HTML {
     margin: 0;
+    padding-top: 1rem;
+    font-family: "Roboto", "sans-serif";
+    background-color: whitesmoke;
+}
+
+.content {
+    display: grid;
+    grid-template-areas: "header"
+                         "add-list-item"
+                         "list";
+}
+
+@media (width > 800px) {
+    .content {
+        grid-template-areas: "header header"
+                             "add-list-item list";
+    }
+}
+
+.content > .header {
+    grid-area: header;
+}
+
+.content > .add-list-item {
+    grid-area: add-list-item;
+}
+
+.content > .list {
+    grid-area: list;
 }

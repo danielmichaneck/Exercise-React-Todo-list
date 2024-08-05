@@ -31,6 +31,10 @@ export function ListItem(props: ListItemProps): ReactElement {
             <p className="list-item-author">{item.author}</p>
             <p className="list-item-timestamp">{item.timestamp.toLocaleDateString()}</p>
         </div>
-        <ListItemCompleteButton clicked={item.clicked} defaultText="Complete" clickedText="Completed" isClicked={handleIsClicked}/>
+        <ListItemCompleteButton
+            clicked={item.clicked}
+            defaultText="Complete"
+            clickedText="Completed"
+            isClicked={handleIsClicked}/>
     </div>
 }
