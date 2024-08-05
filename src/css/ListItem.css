@@ -1,0 +1,36 @@
+.list-item {
+    background-color: lightblue;
+    display: grid;
+    gap: 5%;
+    grid-template-areas: "title button"
+                         "description description"
+                         "bottom bottom";
+    margin-top: 5%;
+    padding: 5%;
+    width: 100%;
+}
+
+.list-item-title {
+    grid-area: title;
+    font-size: large;
+    margin-top: 0;
+    
+    word-wrap: break-word;
+}
+
+.list-item-description {
+    grid-area: description;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.list-item-bottom-bar {
+    display: flex;
+    grid-area: bottom;
+    justify-content: space-between;
+}
+
+.list-item-button {
+    grid-area: button;
+    text-align: right;
+}

@@ -14,7 +14,7 @@ export function ListItemCompleteButton(props: ListItemCompleteButtonProps): Reac
         props.isClicked();
     }
 
-    return <div>
+    return <div className="list-item-button">
         <button onClick={handleOnClick}>{buttonText}</button>
     </div>
 }

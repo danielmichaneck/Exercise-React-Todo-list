@@ -17,7 +17,7 @@ export function List(props: ListProps): ReactElement {
         props.listItemAction(id);
     }
 
-    return <div>
+    return <div className="list">
         {props.items.map((item) => (
             <ListItem id={item.id} author={item.author} name={item.name} description={item.description} timestamp={item.timestamp} action={handleAction} key={item.id}/>
         ))}

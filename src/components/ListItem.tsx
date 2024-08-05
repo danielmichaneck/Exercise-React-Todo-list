@@ -24,12 +24,13 @@ export function ListItem(props: ListItemProps): ReactElement {
         item.clicked = true;
     }
 
-    return <div>
-        <p>{item.name}</p>
-        <p>{item.description}</p>
-        <p>{item.author}</p>
-        <p>{item.timestamp.toLocaleDateString()}</p>
-        <p>{item.clicked.toString()}</p>
+    return <div className="list-item">
+        <p className="list-item-title">{item.name}</p>
+        <p className="list-item-description">{item.description}</p>
+        <div className="list-item-bottom-bar">
+            <p className="list-item-author">{item.author}</p>
+            <p className="list-item-timestamp">{item.timestamp.toLocaleDateString()}</p>
+        </div>
         <ListItemCompleteButton clicked={item.clicked} defaultText="Complete" clickedText="Completed" isClicked={handleIsClicked}/>
     </div>
 }
