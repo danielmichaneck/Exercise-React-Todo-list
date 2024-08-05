@@ -3,9 +3,9 @@ import { List } from "./components/List";
 import { AddListItem } from "./components/AddListItem";
 
 export function App() {
-  const[items, setItems] = useState<{ id: string, name: string; description: string; timestamp: number; }[]>([]);
+  const[items, setItems] = useState<{ id: string, author: string, name: string; description: string; timestamp: number; }[]>([]);
 
-  const addItemToList = (item: { id: string, name: string, description: string, timestamp: number; } ) => {
+  const addItemToList = (item: { id: string, author: string, name: string, description: string, timestamp: number; } ) => {
     setItems((previousItems) => [item, ...previousItems]);
   }
 

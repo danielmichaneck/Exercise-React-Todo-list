@@ -4,6 +4,7 @@ import { ListItem } from "./ListItem";
 interface ListProps {
     items: {
         id: string,
+        author: string,
         name: string,
         description: string,
         timestamp: number;
@@ -18,7 +19,7 @@ export function List(props: ListProps): ReactElement {
 
     return <div>
         {props.items.map((item) => (
-            <ListItem id={item.id} name={item.name} description={item.description} timestamp={item.timestamp} action={handleAction} key={item.id}/>
+            <ListItem id={item.id} author={item.author} name={item.name} description={item.description} timestamp={item.timestamp} action={handleAction} key={item.id}/>
         ))}
     </div>
 }   
