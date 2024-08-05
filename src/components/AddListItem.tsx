@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 
 interface AddListItemProps {
     addItem: (item: {
+        id: string,
         name: string,
         description: string,
         timestamp: number;
@@ -23,7 +24,7 @@ export function AddListItem({addItem}: AddListItemProps): ReactElement {
     const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const timestamp = Date.now();
-        const newItem = {name: itemName, description: itemDescription, timestamp: timestamp};
+        const newItem = {id: itemName + timestamp, name: itemName, description: itemDescription, timestamp: timestamp};
         addItem(newItem);
     }
 
