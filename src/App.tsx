@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { IItem, IItemListContext } from "./interfaces";
 import { Header } from "./components";
+import { data } from "./data";
 
 export function App() {
   const[items, setItems] = useState<IItem[]>([]);
@@ -16,6 +17,7 @@ export function App() {
   }
 
   const itemListContext: IItemListContext = {
+    data: data,
     items: items,
     addItemToList: addItemToList,
     removeItemFromList: removeItemFromList
@@ -23,8 +25,10 @@ export function App() {
 
   return (
     <div className="content">
-      <Header/>
-      <Outlet context={itemListContext}/>
+      <Header text={data.header} links={data.links}/>
+      <div className="body">
+        <Outlet context={itemListContext}/>
+      </div>
     </div>
   );
 }

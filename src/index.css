@@ -1,4 +1,5 @@
 @import url("/src/css/AddListItem.css");
+@import url("/src/css/Header.css");
 @import url("/src/css/List.css");
 @import url("/src/css/ListItem.css");
 
@@ -10,8 +11,14 @@ HTML {
 }
 
 .content {
-    width: 90%;
     margin-left: 5%;
+    margin-top: 0;
+    width: 90%;
+}
+
+.body {
+    padding: 1rem;
+    padding-top: 6rem;
 }
 
 @media (width > 600px) {

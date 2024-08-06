@@ -1,10 +1,17 @@
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { ILink } from "../interfaces";
 
-export function Header(): ReactElement {
+interface HeaderProps {
+    text: string;
+    links: ILink[];
+}
+
+export function Header(props: HeaderProps): ReactElement {
     return <div className="header">
-        <h1>To-do list</h1>
-        <Link to="/">Task list</Link>
-        <Link to="/add-item">Add new task</Link>
+        <Link to="/"><h1 className="header-text">{props.text}</h1></Link>
+        {props.links.map((link) => (
+            <Link className="header-link" to={link.to} key={link.text}>{link.text}</Link>
+        ))}
     </div>
 }

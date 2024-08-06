@@ -1,7 +1,7 @@
-export interface IItemListContext {
-    items: IItem[];
-    addItemToList: (item: IItem) => void;
-    removeItemFromList: (id: string) => void;
+export interface IData {
+    about: string;
+    header: string;
+    links: ILink[]; 
 }
 
 export interface IItem {
@@ -10,4 +10,16 @@ export interface IItem {
     name: string;
     description: string;
     timestamp: number;
+}
+
+export interface IItemListContext {
+    data: IData;
+    items: IItem[];
+    addItemToList: (item: IItem) => void;
+    removeItemFromList: (id: string) => void;
+}
+
+export interface ILink {
+    text: string;
+    to: string;
 }
