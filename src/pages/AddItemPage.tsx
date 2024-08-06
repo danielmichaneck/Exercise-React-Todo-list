@@ -1,19 +1,12 @@
 import { ReactElement, useState } from "react";
+import { useItemListContext } from "../hooks";
+import { IItem } from "../interfaces";
 
-interface AddListItemProps {
-    addItem: (item: {
-        id: string,
-        author: string,
-        name: string,
-        description: string,
-        timestamp: number;
-    }) => void;
-}
-
-export function AddListItem({addItem}: AddListItemProps): ReactElement {
+export function AddItemPage(): ReactElement {
     const[itemName, setItemName] = useState<string>("");
     const[itemDescription, setItemDescription] = useState<string>("");
     const[itemAuthor, setItemAuthor] = useState<string>("");
+    const { addItemToList } = useItemListContext();
 
     const handleOnChangeName: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setItemName(e.target.value);
@@ -30,8 +23,9 @@ export function AddListItem({addItem}: AddListItemProps): ReactElement {
     const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const timestamp = Date.now();
-        const newItem = {id: itemName + timestamp, author: itemAuthor, name: itemName, description: itemDescription, timestamp: timestamp};
-        addItem(newItem);
+        const newItem: IItem = {id: itemName + timestamp, author: itemAuthor, name: itemName, description: itemDescription, timestamp: timestamp};
+        addItemToList(newItem);
+        console.log("New item: " + newItem);
     }
 
     return <form className="form" onSubmit={handleOnSubmit}>

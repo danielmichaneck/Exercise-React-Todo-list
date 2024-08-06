@@ -1,23 +1,30 @@
 import { useState } from "react";
-import { List } from "./components/List";
-import { AddListItem } from "./components/AddListItem";
+import { Outlet } from "react-router-dom";
+import { IItem, IItemListContext } from "./interfaces";
+import { Header } from "./components";
 
 export function App() {
-  const[items, setItems] = useState<{ id: string, author: string, name: string; description: string; timestamp: number; }[]>([]);
+  const[items, setItems] = useState<IItem[]>([]);
 
-  const addItemToList = (item: { id: string, author: string, name: string, description: string, timestamp: number; } ) => {
+  const addItemToList = (item: IItem ) => {
     setItems((previousItems) => [item, ...previousItems]);
+    console.log("Adding item to items: " + items + " Items has length: " + items.length)
   }
 
   const removeItemFromList = (id: string) => {
     setItems((previousItems) => previousItems.filter((item) => item.id !== id));
   }
 
+  const itemListContext: IItemListContext = {
+    items: items,
+    addItemToList: addItemToList,
+    removeItemFromList: removeItemFromList
+  }
+
   return (
     <div className="content">
-      <h1 className="header">Todo-list</h1>
-      <AddListItem addItem={addItemToList}/>
-      <List items={items} listItemAction={removeItemFromList}/>
+      <Header/>
+      <Outlet context={itemListContext}/>
     </div>
   );
 }

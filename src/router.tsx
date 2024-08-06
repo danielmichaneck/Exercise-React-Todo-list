@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import { App } from "./App";
+import { ListPage, AddItemPage } from "./pages";
 
 export const router = createBrowserRouter([
     {

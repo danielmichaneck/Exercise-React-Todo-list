@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
 
-interface ListItemCompleteButtonProps {
+interface ListItemButtonProps {
     clicked: boolean;
     defaultText: string;
     clickedText: string;
     isClicked: () => void;
 }
 
-export function ListItemCompleteButton(props: ListItemCompleteButtonProps): ReactElement {
+export function ListItemButton(props: ListItemButtonProps): ReactElement {
     const buttonText = props.clicked? props.defaultText : props.clickedText;
 
     const handleOnClick: React.MouseEventHandler<HTMLButtonElement> = () => {
