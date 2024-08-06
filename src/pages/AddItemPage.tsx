@@ -23,9 +23,15 @@ export function AddItemPage(): ReactElement {
     const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const timestamp = Date.now();
-        const newItem: IItem = {id: itemName + timestamp, author: itemAuthor, name: itemName, description: itemDescription, timestamp: timestamp};
-        addItemToList(newItem);
+        const newItem = {
+            id: itemName + timestamp,
+            author: itemAuthor,
+            name: itemName,
+            description: itemDescription,
+            timestamp: timestamp
+        };
         console.log("New item: " + newItem);
+        addItemToList(newItem);
     }
 
     return <form className="form" onSubmit={handleOnSubmit}>
