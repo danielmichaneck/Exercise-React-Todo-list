@@ -10,27 +10,27 @@ HTML {
 }
 
 .content {
-    display: grid;
-    grid-template-areas: "header"
-                         "add-list-item"
-                         "list";
+    width: 90%;
+    margin-left: 5%;
+}
+
+@media (width > 600px) {
+    .content {
+        width: 75%;
+        margin-left: 12.5%;
+    }
 }
 
 @media (width > 800px) {
     .content {
-        grid-template-areas: "header header"
-                             "add-list-item list";
+        width: 62.5%;
+        margin-left: 19.125%;
     }
 }
 
-.content > .header {
-    grid-area: header;
-}
-
-.content > .add-list-item {
-    grid-area: add-list-item;
-}
-
-.content > .list {
-    grid-area: list;
+@media (width > 1000px) {
+    .content {
+        width: 50%;
+        margin-left: 25.5%;
+    }
 }
