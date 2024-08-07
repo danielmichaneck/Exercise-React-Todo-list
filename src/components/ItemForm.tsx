@@ -4,28 +4,39 @@ import { IItem } from "..";
 interface ItemFormProps {
     handleOnSubmit: (item: IItem, key?: string) => void;
     key?: string,
-    itemName: string;
-    itemDescription: string;
-    itemAuthor: string;
+    itemName?: string;
+    itemDescription?: string;
+    itemAuthor?: string;
     nameOfItem: string;
 }
 
 export function ItemForm(props: ItemFormProps): ReactElement {
-    const[itemName, setItemName] = useState<string>(props.itemName);
-    const[itemDescription, setItemDescription] = useState<string>(props.itemDescription);
-    const[itemAuthor, setItemAuthor] = useState<string>(props.itemAuthor);
+    const[itemName, setItemName] = useState<string>(getStringValue(props.itemName));
+    const[itemDescription, setItemDescription] = useState<string>(getStringValue(props.itemDescription));
+    const[itemAuthor, setItemAuthor] = useState<string>(getStringValue(props.itemAuthor));
+
+    function getStringValue(prop: string | undefined): string {
+        if (prop !== undefined) {
+            return prop;
+        }
+        return "";
+    }
 
     const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const timestamp = Date.now();
-        const newItem: IItem = {
-            id: itemName + timestamp,
+        let id: string = itemName + timestamp;
+        if (props.key !== undefined) {
+            id = props.key;
+        }
+        const submitItem: IItem = {
+            id: id,
             author: itemAuthor,
             name: itemName,
             description: itemDescription,
             timestamp: timestamp
         };
-        props.handleOnSubmit(newItem, props.key);
+        props.handleOnSubmit(submitItem, id);
     }
 
     const handleOnChangeName: React.ChangeEventHandler<HTMLInputElement> = (e) => {

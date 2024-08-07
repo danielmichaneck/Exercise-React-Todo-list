@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
 import { ListItemButtons } from ".";
-import { IItem } from "../interfaces";
+import { IItem, IListItemButton } from "../interfaces";
 
 interface ListItemProps {
     item: IItem,
     itemClicked: boolean,
-    action: (id: string) => void;
+    buttons: IListItemButton[];
 }
 
 export function ListItem(props: ListItemProps): ReactElement {

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
-import { ILink } from "../interfaces";
+import { ILink } from "..";
 
 interface HeaderProps {
     text: string;

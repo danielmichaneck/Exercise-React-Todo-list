@@ -1,4 +1,4 @@
-import { IData } from ".";
+import { IData, IItem, IItemListContext } from ".";
 
 export const data: IData = {
     about: "This is a to-do list! Add your own tasks on the \"Add task\" page and view them on the \"List\" page.",
@@ -18,4 +18,20 @@ export const data: IData = {
             to: "about"
         }
     ],
+    listItemButtons: [
+        {
+            id: "",
+            linkTo: "/edit",
+            text: "Edit"
+        },
+        {
+            id: "",
+            text: "Complete",
+            action: () => {}
+        },
+        {
+            id: "",
+            text: "Completed",
+        }
+    ]
 }

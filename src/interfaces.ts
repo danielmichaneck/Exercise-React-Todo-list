@@ -2,7 +2,8 @@ export interface IData {
     about: string;
     header: string;
     nameOfItem: string;
-    links: ILink[]; 
+    links: ILink[];
+    listItemButtons: IListItemButton[];
 }
 
 export interface IItem {
@@ -25,4 +26,11 @@ export interface IItemListContext {
 export interface ILink {
     text: string;
     to: string;
+}
+
+export interface IListItemButton {
+    id: string;
+    linkTo?: string;
+    text: string;
+    action?: (param: string) => void;
 }

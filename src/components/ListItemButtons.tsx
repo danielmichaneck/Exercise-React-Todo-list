@@ -1,22 +1,15 @@
 import { ReactElement } from "react";
-import { Link } from "react-router-dom";
+import { IListItemButton } from "..";
+import { ListItemButton } from ".";
 
 interface ListItemButtonsProps {
-    clicked: boolean;
-    defaultText: string;
-    clickedText: string;
-    isClicked: () => void;
+    buttons: IListItemButton[];
 }
 
-export function ListItemButtons(props: ListItemButtonsProps): ReactElement {
-    const buttonText = props.clicked? props.defaultText : props.clickedText;
-
-    const handleOnClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-        props.isClicked();
-    }
-
+export function ListItemButtons({buttons}: ListItemButtonsProps): ReactElement {
     return <div className="list-item-buttons">
-        <Link className="header-link" to="/edit">Edit</Link>
-        <button onClick={handleOnClick}>{buttonText}</button>
+        {buttons.map((button) => (
+            <ListItemButton button={button}/>
+        ))}
     </div>
 }
