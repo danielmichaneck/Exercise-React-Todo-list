@@ -1,12 +1,12 @@
 .list-item {
-    background-color: lightblue;
+    background-color: rgb(130, 170, 170);
     border-radius: 1rem;
     display: grid;
+    flex: 2;
     gap: 5%;
     grid-template-areas: "title button"
                          "description description"
                          "bottom bottom";
-    margin-top: 5%;
     max-width: 100%;
     padding: 5%;
 }

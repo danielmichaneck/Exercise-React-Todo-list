@@ -25,13 +25,10 @@ export function ItemForm(props: ItemFormProps): ReactElement {
     const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const timestamp = Date.now();
-        console.log("Key: " + props.id);
         let id: string = itemName + timestamp;
-        console.log("Pre id: " + id);
         if (props.id !== undefined) {
             id = props.id;
         }
-        console.log("Post id: " + id);
         const submitItem: IItem = {
             id: id,
             author: itemAuthor,

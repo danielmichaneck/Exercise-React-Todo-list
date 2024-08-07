@@ -20,11 +20,13 @@ export interface IItemListContext {
     items: IItem[];
     addItemToList: (item: IItem) => void;
     editItem: (id: string) => void;
+    moveItem: (id: string, up: boolean) => void;
     removeItemFromList: (id: string) => void;
     updateItemInList: (item: IItem) => void;
 }
 
 export interface ILink {
+    classes: string;
     text: string;
     to: string;
 }

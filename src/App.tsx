@@ -20,6 +20,24 @@ export function App() {
     navigate("/edit");
   }
 
+  const moveItem = (id: string, up: boolean) => {
+    console.log("Moving item: " + id);
+    const item = items.find((item) => item.id === id);
+    const index = items.findIndex((item) => item.id === id);
+    if (up && index > 0 && item !== undefined) {
+      const newItems = [...items];
+      newItems[index] = newItems[index - 1];
+      newItems[index - 1] = item;
+      setItems(newItems);
+    }
+    else if (index < items.length - 1 && item !== undefined) {
+      const newItems = [...items];
+      newItems[index] = newItems[index + 1];
+      newItems[index + 1] = item;
+      setItems(newItems);
+    }
+  }
+
   const removeItemFromList = (id: string) => {
     setItems((previousItems) => previousItems.filter((item) => item.id !== id));
     console.log("Removing item from items: " + id);
@@ -37,6 +55,7 @@ export function App() {
     items: items,
     addItemToList: addItemToList,
     editItem: editItem,
+    moveItem: moveItem,
     removeItemFromList: removeItemFromList,
     updateItemInList: updateItemInList
   }

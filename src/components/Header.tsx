@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ILink } from "..";
 
 interface HeaderProps {
@@ -8,10 +8,18 @@ interface HeaderProps {
 }
 
 export function Header(props: HeaderProps): ReactElement {
+    const location = useLocation();
+
+    props.links.forEach((link) => link.classes="header-link")
+    const currentLink = props.links.find((link) => link.to === location.pathname);
+    if (currentLink !== undefined) {
+        currentLink.classes = "header-link header-link-current";
+    }
+
     return <div className="header">
         <Link to="/"><h1 className="header-text">{props.text}</h1></Link>
         {props.links.map((link) => (
-            <Link className="header-link" to={link.to} key={link.text}>{link.text}</Link>
+            <Link key={link.text} className={link.classes} to={link.to}>{link.text}</Link>
         ))}
     </div>
 }

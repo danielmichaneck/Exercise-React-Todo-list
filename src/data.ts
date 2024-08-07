@@ -6,16 +6,19 @@ export const data: IData = {
     nameOfItem: "Task",
     links: [
         {
+            classes: "header-link",
             text: "List",
             to: "/"
         },
         {
+            classes: "header-link",
             text: "Add task",
-            to: "add-item"
+            to: "/add-item"
         },
         {
+            classes: "header-link",
             text: "About",
-            to: "about"
+            to: "/about"
         }
     ],
     listItemButtons: [

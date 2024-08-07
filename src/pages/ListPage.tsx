@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { ListItem } from "../components";
+import { ListItem, ListSideButtons } from "../components";
 import { useItemListContext } from "../hooks";
 
 export function ListPage(): ReactElement {
@@ -22,21 +22,28 @@ export function ListPage(): ReactElement {
             <p>{listLengthText}</p>
         </div>
             {context.items.map((item) => (
-                <ListItem
-                    key={item.id}
-                    buttons={[{
-                        id: "0",
-                        itemId: item.id,
-                        text: "Edit",
-                        action: context.editItem
-                    },
-                    {
-                        id: "1",
-                        itemId: item.id,
-                        text: "Complete",
-                        action: context.removeItemFromList
-                    }]}
-                    item={item}/>
+                <div className="list-row">
+                    <ListItem
+                        key={item.id}
+                        buttons={[{
+                            id: "0",
+                            itemId: item.id,
+                            text: "Edit",
+                            action: context.editItem
+                        },
+                        {
+                            id: "1",
+                            itemId: item.id,
+                            text: "Complete",
+                            action: context.removeItemFromList
+                        }]}
+                        item={item}/>
+                    <ListSideButtons
+                        action={context.moveItem}
+                        downDisabled={context.items.findIndex((item) => item) >= (context.items.length - 1)}
+                        itemId={item.id}
+                        upDisabled={context.items.findIndex((item) => item) > 0}/>
+                </div>
         ))}
     </div>
 }
