@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { ListItemButton } from ".";
+import { ListItemButtons } from ".";
 import { IItem } from "../interfaces";
 
 interface ListItemProps {
@@ -24,7 +24,7 @@ export function ListItem(props: ListItemProps): ReactElement {
             <p className="list-item-author">{item.author}</p>
             <p className="list-item-timestamp">{item.timestamp.toLocaleString()}</p>
         </div>
-        <ListItemButton
+        <ListItemButtons
             clicked={clicked}
             defaultText="Complete"
             clickedText="Completed"

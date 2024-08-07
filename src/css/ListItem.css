@@ -29,7 +29,7 @@
     justify-content: space-between;
 }
 
-.list-item-button {
+.list-item-buttons {
     grid-area: button;
     text-align: right;
 }

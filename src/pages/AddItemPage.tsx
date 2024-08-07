@@ -3,6 +3,7 @@ import { useItemListContext } from "../hooks";
 import { IItem } from "../interfaces";
 
 export function AddItemPage(): ReactElement {
+    const context = useItemListContext();
     const[itemName, setItemName] = useState<string>("");
     const[itemDescription, setItemDescription] = useState<string>("");
     const[itemAuthor, setItemAuthor] = useState<string>("");
@@ -36,11 +37,11 @@ export function AddItemPage(): ReactElement {
     return <form className="form" onSubmit={handleOnSubmit}>
         <input
             type="text"
-            placeholder="Task name"
+            placeholder={context.data.nameOfItem}
             value={itemName}
             onChange={handleOnChangeName}/>
         <textarea
-            placeholder="Task description"
+            placeholder="Details"
             value={itemDescription}
             onChange={handleOnChangeDescription}/>
         <input
@@ -48,6 +49,6 @@ export function AddItemPage(): ReactElement {
             placeholder="Author"
             value={itemAuthor}
             onChange={handleOnChangeAuthor}/>
-        <button type="submit">Add item</button>
+        <button type="submit">Add {context.data.nameOfItem.toLocaleLowerCase()}</button>
     </form>
 }

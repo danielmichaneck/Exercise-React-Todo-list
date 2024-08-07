@@ -1,6 +1,7 @@
 export interface IData {
     about: string;
     header: string;
+    nameOfItem: string;
     links: ILink[]; 
 }
 
@@ -13,9 +14,11 @@ export interface IItem {
 }
 
 export interface IItemListContext {
+    currentItemKey: string | undefined;
     data: IData;
     items: IItem[];
     addItemToList: (item: IItem) => void;
+    editItemInList: (item: IItem) => void;
     removeItemFromList: (id: string) => void;
 }
 

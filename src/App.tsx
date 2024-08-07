@@ -12,14 +12,20 @@ export function App() {
     console.log("Adding item to items: " + items + " Items has length: " + items.length)
   }
 
+  const editItemInList = (item: IItem ) => {
+    console.log("Editing item");
+  }
+
   const removeItemFromList = (id: string) => {
     setItems((previousItems) => previousItems.filter((item) => item.id !== id));
   }
 
   const itemListContext: IItemListContext = {
+    currentItemKey: undefined,
     data: data,
     items: items,
     addItemToList: addItemToList,
+    editItemInList: editItemInList,
     removeItemFromList: removeItemFromList
   }
 

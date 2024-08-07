@@ -3,6 +3,7 @@ import { IData } from ".";
 export const data: IData = {
     about: "This is a to-do list! Add your own tasks on the \"Add task\" page and view them on the \"List\" page.",
     header: "To-do list",
+    nameOfItem: "Task",
     links: [
         {
             text: "List",
@@ -16,5 +17,5 @@ export const data: IData = {
             text: "About",
             to: "about"
         }
-    ]
+    ],
 }
