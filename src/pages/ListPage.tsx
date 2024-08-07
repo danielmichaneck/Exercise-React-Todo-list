@@ -15,18 +15,28 @@ export function ListPage(): ReactElement {
     else {
         listLengthText = "There are currently " + context.items.length + " items in the list."
     }
-    
-    const handleAction = (id: string) => {
-        context.removeItemFromList(id);
-    }
 
     return <div className="list">
         <div>
             <h1>List</h1>
             <p>{listLengthText}</p>
         </div>
-        {context.items.map((item) => (
-            <ListItem item={item} itemClicked={false} action={handleAction} key={item.id}/>
+            {context.items.map((item) => (
+                <ListItem
+                    key={item.id}
+                    buttons={[{
+                        id: "0",
+                        itemId: item.id,
+                        text: "Edit",
+                        action: context.editItem
+                    },
+                    {
+                        id: "1",
+                        itemId: item.id,
+                        text: "Complete",
+                        action: context.removeItemFromList
+                    }]}
+                    item={item}/>
         ))}
     </div>
-}   
+}

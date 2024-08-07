@@ -19,8 +19,9 @@ export interface IItemListContext {
     data: IData;
     items: IItem[];
     addItemToList: (item: IItem) => void;
-    editItemInList: (item: IItem) => void;
+    editItem: (id: string) => void;
     removeItemFromList: (id: string) => void;
+    updateItemInList: (item: IItem) => void;
 }
 
 export interface ILink {
@@ -30,6 +31,7 @@ export interface ILink {
 
 export interface IListItemButton {
     id: string;
+    itemId?: string;
     linkTo?: string;
     text: string;
     action?: (param: string) => void;

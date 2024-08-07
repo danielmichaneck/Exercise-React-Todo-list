@@ -6,6 +6,8 @@ export function AddItemPage(): ReactElement {
     const context = useItemListContext();
     
     return <div>
-        <ItemForm nameOfItem={context.data.nameOfItem} handleOnSubmit={context.addItemToList}/>
+        <ItemForm
+            nameOfItem={context.data.nameOfItem}
+            handleOnSubmit={context.addItemToList}/>
     </div>
 }

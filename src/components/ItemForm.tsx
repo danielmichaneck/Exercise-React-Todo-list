@@ -2,12 +2,19 @@ import { ReactElement, useState } from "react";
 import { IItem } from "..";
 
 interface ItemFormProps {
-    handleOnSubmit: (item: IItem, key?: string) => void;
-    key?: string,
+    id?: string,
     itemName?: string;
     itemDescription?: string;
     itemAuthor?: string;
     nameOfItem: string;
+    handleOnSubmit: (item: IItem) => void;
+}
+
+function getStringValue(prop: string | undefined): string {
+    if (prop !== undefined) {
+        return prop;
+    }
+    return "";
 }
 
 export function ItemForm(props: ItemFormProps): ReactElement {
@@ -15,20 +22,16 @@ export function ItemForm(props: ItemFormProps): ReactElement {
     const[itemDescription, setItemDescription] = useState<string>(getStringValue(props.itemDescription));
     const[itemAuthor, setItemAuthor] = useState<string>(getStringValue(props.itemAuthor));
 
-    function getStringValue(prop: string | undefined): string {
-        if (prop !== undefined) {
-            return prop;
-        }
-        return "";
-    }
-
     const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const timestamp = Date.now();
+        console.log("Key: " + props.id);
         let id: string = itemName + timestamp;
-        if (props.key !== undefined) {
-            id = props.key;
+        console.log("Pre id: " + id);
+        if (props.id !== undefined) {
+            id = props.id;
         }
+        console.log("Post id: " + id);
         const submitItem: IItem = {
             id: id,
             author: itemAuthor,
@@ -36,7 +39,7 @@ export function ItemForm(props: ItemFormProps): ReactElement {
             description: itemDescription,
             timestamp: timestamp
         };
-        props.handleOnSubmit(submitItem, id);
+        props.handleOnSubmit(submitItem);
     }
 
     const handleOnChangeName: React.ChangeEventHandler<HTMLInputElement> = (e) => {

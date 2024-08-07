@@ -31,7 +31,7 @@ export const data: IData = {
         },
         {
             id: "",
-            text: "Completed",
+            text: "Completed"
         }
     ]
 }

@@ -7,19 +7,19 @@ export function EditPage(): ReactElement {
     const context = useItemListContext();
     const currentItem = context.items.find((item) => item.id === context.currentItemKey);
 
-    if (context.currentItemKey === undefined) {
-        return <Link to="/">Return to list</Link>
+    if (currentItem === undefined) {
+        return <h1>No item!</h1>
     }
 
     return <div>
         <Link to="/">Return to list</Link>
         <ItemForm 
-            key={currentItem!.id}
+            id={currentItem!.id}
             itemName={currentItem!.name}
             itemDescription={currentItem!.description}
             itemAuthor={currentItem!.author}
             nameOfItem={context.data.nameOfItem}
-            handleOnSubmit={context.editItemInList}
+            handleOnSubmit={context.updateItemInList}
         />
     </div>
 }

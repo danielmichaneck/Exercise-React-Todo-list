@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { Link } from "react-router-dom";
 import { IListItemButton } from "..";
 
 interface ListItemButtonProps {
@@ -8,11 +7,12 @@ interface ListItemButtonProps {
 
 export function ListItemButton({button}: ListItemButtonProps): ReactElement {
     const handleOnClick = () => {
-        button.action!(button.id);
-    }
-
-    if (button.linkTo !== undefined) {
-        return <Link to={button.linkTo}>{button.text}</Link>
+        if (button.itemId !== undefined) {
+            button.action!(button.itemId);
+        }
+        else {
+            button.action!(button.id);
+        }
     }
     
     if (button.action !== undefined) {

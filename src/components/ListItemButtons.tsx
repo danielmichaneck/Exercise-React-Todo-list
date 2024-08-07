@@ -9,7 +9,9 @@ interface ListItemButtonsProps {
 export function ListItemButtons({buttons}: ListItemButtonsProps): ReactElement {
     return <div className="list-item-buttons">
         {buttons.map((button) => (
-            <ListItemButton button={button}/>
+            <ListItemButton 
+                key={button.id}
+                button={button}/>
         ))}
     </div>
 }
