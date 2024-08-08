@@ -36,5 +36,35 @@ export const data: IData = {
             id: "",
             text: "Completed"
         }
+    ],
+    listSeed: [
+        {
+            id: "1",
+            author: "Daniel",
+            description: "The first task.",
+            name: "1",
+            timestamp: 1700000000000
+        },
+        {
+            id: "2",
+            author: "Jonatan",
+            description: "The second task.",
+            name: "2",
+            timestamp: 1700110000000
+        },
+        {
+            id: "3",
+            author: "Mats",
+            description: "The third task.",
+            name: "3",
+            timestamp: 1700220000000
+        },
+        {
+            id: "4",
+            author: "Erika",
+            description: "The fourth task.",
+            name: "4",
+            timestamp: 1700330000000
+        }
     ]
 }

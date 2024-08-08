@@ -5,7 +5,7 @@ import { data, IItem, IItemListContext } from ".";
 
 export function App() {
   const navigate = useNavigate();
-  const[items, setItems] = useState<IItem[]>([]);
+  const[items, setItems] = useState<IItem[]>(data.listSeed);
   const[currentItemKey, setCurrentItemKey] = useState<string>("");
 
   const addItemToList = (item: IItem ) => {
@@ -43,6 +43,20 @@ export function App() {
     console.log("Removing item from items: " + id);
   }
 
+  const sortList = (sortBy: "author" | "timestamp") => {
+    console.log("Sorting " + items);
+    console.log(parseInt(items[0].author));
+    const sortedList = [...items];
+    if (sortBy === "author") {
+      sortedList.sort((itemA, itemB) => itemA.author.localeCompare(itemB.author));
+    }
+    else {
+      sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
+    }
+    setItems(sortedList);
+    console.log("Items sorted: " + items);
+  }
+
   const updateItemInList = (item: IItem ) => {
     console.log("Editing item in items: " + item.id);
     removeItemFromList(item.id);
@@ -57,6 +71,7 @@ export function App() {
     editItem: editItem,
     moveItem: moveItem,
     removeItemFromList: removeItemFromList,
+    sortList: sortList,
     updateItemInList: updateItemInList
   }
 

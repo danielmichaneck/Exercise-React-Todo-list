@@ -16,15 +16,24 @@ export function ListPage(): ReactElement {
         listLengthText = "There are currently " + context.items.length + " items in the list."
     }
 
+    const handleOnClickSortByAuthor = () => {
+        context.sortList("author");
+    }
+
+    const handleOnClickSortByTimestamp = () => {
+        context.sortList("timestamp");
+    }
+
     return <div className="list">
         <div>
             <h1>List</h1>
             <p>{listLengthText}</p>
+            <button onClick={handleOnClickSortByAuthor}>Sort by author</button>
+            <button onClick={handleOnClickSortByTimestamp}>Sort by timestamp</button>
         </div>
             {context.items.map((item) => (
-                <div className="list-row">
+                <div key={item.id} className="list-row">
                     <ListItem
-                        key={item.id}
                         buttons={[{
                             id: "0",
                             itemId: item.id,
@@ -40,9 +49,9 @@ export function ListPage(): ReactElement {
                         item={item}/>
                     <ListSideButtons
                         action={context.moveItem}
-                        downDisabled={context.items.findIndex((item) => item) >= (context.items.length - 1)}
+                        downDisabled={context.items.findIndex((i) => i === item) >= (context.items.length - 1)}
                         itemId={item.id}
-                        upDisabled={context.items.findIndex((item) => item) > 0}/>
+                        upDisabled={context.items.findIndex((i) => i === item) < 1}/>
                 </div>
         ))}
     </div>

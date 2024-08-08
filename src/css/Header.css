@@ -1,16 +1,22 @@
 .header {
-    align-items: end;
     background-color: darkslategray;
+    justify-content: center;
     display: flex;
     height: 6rem;
-    justify-content: space-between;
-    width: inherit;
     padding-left: 2rem;
     padding-right: 2rem;
     position: fixed;
 }
 
-.header > * {
+.header-container {
+    align-items: end;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    max-width: 800px;
+}
+
+.header-container > * {
     color: white;
     margin-top: 0;
     text-decoration: none;

@@ -6,6 +6,7 @@ interface ItemFormProps {
     itemName?: string;
     itemDescription?: string;
     itemAuthor?: string;
+    itemTimestamp?: number;
     nameOfItem: string;
     handleOnSubmit: (item: IItem) => void;
 }
@@ -24,7 +25,10 @@ export function ItemForm(props: ItemFormProps): ReactElement {
 
     const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        const timestamp = Date.now();
+        let timestamp = Date.now();
+        if (props.itemTimestamp !== undefined) {
+            timestamp = props.itemTimestamp;
+        }
         let id: string = itemName + timestamp;
         if (props.id !== undefined) {
             id = props.id;

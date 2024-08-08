@@ -17,9 +17,11 @@ export function Header(props: HeaderProps): ReactElement {
     }
 
     return <div className="header">
-        <Link to="/"><h1 className="header-text">{props.text}</h1></Link>
-        {props.links.map((link) => (
-            <Link key={link.text} className={link.classes} to={link.to}>{link.text}</Link>
-        ))}
+        <div className="header-container">
+            <Link to="/"><h1 className="header-text">{props.text}</h1></Link>
+            {props.links.map((link) => (
+                <Link key={link.text} className={link.classes} to={link.to}>{link.text}</Link>
+            ))}
+        </div>
     </div>
 }

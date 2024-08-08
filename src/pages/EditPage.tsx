@@ -18,6 +18,7 @@ export function EditPage(): ReactElement {
             itemName={currentItem!.name}
             itemDescription={currentItem!.description}
             itemAuthor={currentItem!.author}
+            itemTimestamp={currentItem!.timestamp}
             nameOfItem={context.data.nameOfItem}
             handleOnSubmit={context.updateItemInList}
         />

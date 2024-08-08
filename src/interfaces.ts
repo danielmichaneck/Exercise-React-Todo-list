@@ -4,6 +4,7 @@ export interface IData {
     nameOfItem: string;
     links: ILink[];
     listItemButtons: IListItemButton[];
+    listSeed: IItem[];
 }
 
 export interface IItem {
@@ -22,6 +23,7 @@ export interface IItemListContext {
     editItem: (id: string) => void;
     moveItem: (id: string, up: boolean) => void;
     removeItemFromList: (id: string) => void;
+    sortList: (sortBy: "author" | "timestamp") => void;
     updateItemInList: (item: IItem) => void;
 }
 
