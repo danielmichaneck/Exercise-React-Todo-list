@@ -60,6 +60,6 @@
 
 .header-link:active {
     background-color: rgb(80, 124, 124);
-    color: black;
+    color: gray;
     font-weight: 500;
 }

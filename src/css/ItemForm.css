@@ -17,6 +17,7 @@
 }
 
 .form-text-row {
+    align-items: end;
     display: flex;
     justify-content: space-between;
     margin: 0;
