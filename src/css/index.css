@@ -24,7 +24,7 @@ body {
     flex: 1;
     justify-content: center;
     padding: 1rem;
-    padding-top: 6rem;
+    padding-top: 12rem;
 }
 
 .body > * {
@@ -34,13 +34,12 @@ body {
     max-width: 600px;
 }
 
-/* @media (width > 600px) {
-    .content > * {
-        left: 5%;
-        right: 5%;
+ @media (width > 600px) {
+    .body {
+        padding-top: 6rem;
     }
 }
-
+/*
 @media (width > 800px) {
     .content {
         width: 62.5%;
