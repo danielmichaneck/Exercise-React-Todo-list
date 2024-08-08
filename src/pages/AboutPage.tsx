@@ -5,6 +5,6 @@ export function AboutPage(): ReactElement {
     const { data, items } = useItemListContext();
 
     return <div>
-        <p>{data.about} There are {items.length} items in the list.</p>
+        <p>{data.about} There are currently {items.length} {data.nameOfItemPlural.toLocaleLowerCase()} in the list.</p>
     </div>
 }

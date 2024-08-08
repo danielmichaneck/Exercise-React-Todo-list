@@ -48,6 +48,7 @@ export function App() {
     console.log(parseInt(items[0].author));
     const sortedList = [...items];
     if (sortBy === "author") {
+      sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
       sortedList.sort((itemA, itemB) => itemA.author.localeCompare(itemB.author));
     }
     else {

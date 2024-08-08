@@ -2,6 +2,7 @@ export interface IData {
     about: string;
     header: string;
     nameOfItem: string;
+    nameOfItemPlural: string;
     links: ILink[];
     listItemButtons: IListItemButton[];
     listSeed: IItem[];
