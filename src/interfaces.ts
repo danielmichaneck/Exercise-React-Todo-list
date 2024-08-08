@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IData {
     about: string;
     header: string;
@@ -38,6 +40,6 @@ export interface IListItemButton {
     id: string;
     itemId?: string;
     linkTo?: string;
-    text: string;
+    text: ReactNode;
     action?: (param: string) => void;
 }

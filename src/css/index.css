@@ -1,4 +1,3 @@
-@import url("/src/css/AddListItem.css");
 @import url("/src/css/Header.css");
 @import url("/src/css/List.css");
 @import url("/src/css/ListItem.css");
@@ -40,6 +39,37 @@ body {
         padding-top: 6rem;
     }
 }
+
+.button-template {
+    align-content: center;
+    background-color: rgb(180, 210, 210);
+    border: 0;
+    border-radius: 1rem;
+    display: flex;
+    font-size: medium;
+    padding: 1rem;
+}
+
+.button-template > * {
+    margin: 0;
+}
+
+.button-template:hover {
+    background-color: rgb(80, 124, 124);
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.button-template:active {
+    color: black;
+}
+
+.button-template:disabled {
+    display: none;
+}
+
+
 /*
 @media (width > 800px) {
     .content {

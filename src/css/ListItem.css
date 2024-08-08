@@ -1,5 +1,5 @@
 .list-item {
-    background-color: rgb(130, 170, 170);
+    background-color: rgb(150, 200, 200);
     border-radius: 1rem;
     display: grid;
     flex: 2;
@@ -8,18 +8,30 @@
                          "description description"
                          "bottom bottom";
     max-width: 100%;
-    padding: 5%;
+    padding: 2.5%;
+    padding-bottom: 5%;
 }
 
 .list-item-title {
+    background-color: rgb(100, 150, 150);
+    border-radius: 1rem;
+    color: white;
+    padding: 1rem;
     grid-area: title;
     font-size: large;
+    font-weight: 500;
     margin-top: 0;
+    margin-bottom: 0;
     word-wrap: break-word;
 }
 
 .list-item-description {
+    background-color: whitesmoke;
+    border-radius: 1rem;
     grid-area: description;
+    padding: 1rem;
+    margin: 0;
+    margin-top: 1rem;
     word-wrap: break-word;
 }
 
@@ -30,6 +42,35 @@
 }
 
 .list-item-buttons {
+    gap: 1rem;
     grid-area: button;
+    display: flex;
+    align-items: center;
+    justify-content: end;
     text-align: right;
+}
+
+.list-item-button {
+    align-content: center;
+    background-color: rgb(180, 210, 210);
+    border: 0;
+    border-radius: 1rem;
+    display: flex;
+    font-size: medium;
+    padding: 1rem;
+}
+
+.list-item-button > * {
+    margin: 0;
+}
+
+.list-item-button:hover {
+    background-color: rgb(80, 124, 124);
+    color: white;
+    font-weight: 500;
+}
+
+.list-button-symbol {
+    position: relative;
+    top: 4px;
 }

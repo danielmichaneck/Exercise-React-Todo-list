@@ -12,7 +12,6 @@ export function App() {
     setItems((previousItems) => [item, ...previousItems]);
     setCurrentItemKey(item.id);
     console.log("Adding item to items: " + item.id)
-    navigate("/");
   }
 
   const editItem = (id: string ) => {
@@ -44,8 +43,6 @@ export function App() {
   }
 
   const sortList = (sortBy: "author" | "timestamp") => {
-    console.log("Sorting " + items);
-    console.log(parseInt(items[0].author));
     const sortedList = [...items];
     if (sortBy === "author") {
       sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
@@ -55,13 +52,13 @@ export function App() {
       sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
     }
     setItems(sortedList);
-    console.log("Items sorted: " + items);
   }
 
   const updateItemInList = (item: IItem ) => {
     console.log("Editing item in items: " + item.id);
     removeItemFromList(item.id);
     addItemToList(item);
+    navigate("/");
   }
 
   const itemListContext: IItemListContext = {

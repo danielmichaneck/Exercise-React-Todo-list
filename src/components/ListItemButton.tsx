@@ -16,7 +16,7 @@ export function ListItemButton({button}: ListItemButtonProps): ReactElement {
     }
     
     if (button.action !== undefined) {
-        return <button onClick={handleOnClick}>{button.text}</button>
+        return <button className="button-template list-item-button" onClick={handleOnClick}>{button.text}</button>
     }
 
     return <></>

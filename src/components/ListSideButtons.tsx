@@ -17,7 +17,7 @@ export function ListSideButtons(props: ListSideButtonsProps): ReactElement {
     }
 
     return <div className="list-row-buttons">
-        <button disabled={props.upDisabled} onClick={handleOnClickUp}><span className="material-symbols-outlined">arrow_upward</span></button>
-        <button disabled={props.downDisabled} onClick={handleOnClickDown}><span className="material-symbols-outlined">arrow_downward</span></button>
+        <button className="button-template" disabled={props.upDisabled} onClick={handleOnClickUp}><span className="material-symbols-outlined">arrow_upward</span></button>
+        <button className="button-template" disabled={props.downDisabled} onClick={handleOnClickDown}><span className="material-symbols-outlined">arrow_downward</span></button>
     </div>
 }

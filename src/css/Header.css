@@ -12,7 +12,8 @@
     flex: 1;
     grid-template-areas: "text"
                          "links";
-    max-width: 800px;
+    margin-top: 1rem;
+                         max-width: 800px;
 }
 
 @media (width > 600px) {
@@ -54,5 +55,11 @@
 
 .header-link:hover {
     background-color: rgb(80, 124, 124);
+    font-weight: 500;
+}
+
+.header-link:active {
+    background-color: rgb(80, 124, 124);
+    color: black;
     font-weight: 500;
 }

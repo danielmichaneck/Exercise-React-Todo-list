@@ -1,35 +1,27 @@
 import { ReactElement } from "react";
 import { ListItem, ListSideButtons } from "../components";
 import { useItemListContext } from "../hooks";
+import { ListSortButtons } from "../components/ListSortButtons";
 
 export function ListPage(): ReactElement {
     const context = useItemListContext();
     let listLengthText: string = "";
 
     if (context.items.length === 1) {
-        listLengthText = "There is currently one item in the list.";
+        listLengthText = "There is currently one " + context.data.nameOfItem + " in the list.";
     }
     else if (context.items.length < 1) {
         listLengthText = "The list is currently empty."
     }
     else {
-        listLengthText = "There are currently " + context.items.length + " items in the list."
-    }
-
-    const handleOnClickSortByAuthor = () => {
-        context.sortList("author");
-    }
-
-    const handleOnClickSortByTimestamp = () => {
-        context.sortList("timestamp");
+        listLengthText = "There are currently " + context.items.length + " " + context.data.nameOfItemPlural.toLocaleLowerCase() + " in the list."
     }
 
     return <div className="list">
         <div>
-            <h1>List</h1>
+            <h1>{context.data.nameOfItemPlural}</h1>
             <p>{listLengthText}</p>
-            <button onClick={handleOnClickSortByAuthor}>Sort by author</button>
-            <button onClick={handleOnClickSortByTimestamp}>Sort by timestamp</button>
+            <ListSortButtons disabled={context.items.length < 1} sort={context.sortList}/>
         </div>
             {context.items.map((item) => (
                 <div key={item.id} className="list-row">
@@ -37,13 +29,13 @@ export function ListPage(): ReactElement {
                         buttons={[{
                             id: "0",
                             itemId: item.id,
-                            text: "Edit",
+                            text: <p>Edit <span className="list-button-symbol material-symbols-outlined">edit_note</span></p>,
                             action: context.editItem
                         },
                         {
                             id: "1",
                             itemId: item.id,
-                            text: "Complete",
+                            text: <p>Complete <span className="list-button-symbol material-symbols-outlined">check_small</span></p>,
                             action: context.removeItemFromList
                         }]}
                         item={item}/>
