@@ -7,6 +7,7 @@ export function AddItemPage(): ReactElement {
     
     return <div>
         <ItemForm
+            addOrEdit="Add"
             nameOfItem={context.data.nameOfItem}
             handleOnSubmit={context.addItemToList}/>
     </div>

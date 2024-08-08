@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { IItem } from "..";
 
 interface ItemFormProps {
+    addOrEdit: "Add" | "Edit";
     id?: string,
     itemName?: string;
     itemDescription?: string;
@@ -58,18 +59,18 @@ export function ItemForm(props: ItemFormProps): ReactElement {
     return <form className="form" onSubmit={handleOnSubmit}>
         <input
             type="text"
-            placeholder={itemName}
+            placeholder={"Name"}
             value={itemName}
             onChange={handleOnChangeName}/>
         <textarea
-            placeholder={itemDescription}
+            placeholder={"Description"}
             value={itemDescription}
             onChange={handleOnChangeDescription}/>
         <input
             type="text"
-            placeholder={itemAuthor}
+            placeholder={"Author"}
             value={itemAuthor}
             onChange={handleOnChangeAuthor}/>
-        <button type="submit">Add {props.nameOfItem.toLocaleLowerCase()}</button>
+        <button type="submit">{props.addOrEdit} {props.nameOfItem.toLocaleLowerCase()}</button>
     </form>
 }
