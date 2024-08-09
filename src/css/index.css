@@ -68,19 +68,3 @@ body {
 .button-template:disabled {
     display: none;
 }
-
-
-/*
-@media (width > 800px) {
-    .content {
-        width: 62.5%;
-        margin-left: 19.125%;
-    }
-}
-
-@media (width > 1000px) {
-    .content {
-        width: 50%;
-        margin-left: 25%;
-    }
-} */
