@@ -12,7 +12,6 @@ export function EditPage(): ReactElement {
     }
 
     return <div>
-        <Link to="/">Return to list</Link>
         <ItemForm 
             addOrUpdate="Edit"
             id={currentItem!.id}
