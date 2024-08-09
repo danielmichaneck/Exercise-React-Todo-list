@@ -7,6 +7,7 @@ export function App() {
   const navigate = useNavigate();
   const[items, setItems] = useState<IItem[]>(data.listSeed);
   const[currentItemKey, setCurrentItemKey] = useState<string>("");
+  const[sortedBy, setSortedBy] = useState<"author" | "date" | "other">("other");
 
   const addItemToList = (item: IItem ) => {
     setItems((previousItems) => [item, ...previousItems]);
@@ -45,11 +46,25 @@ export function App() {
   const sortList = (sortBy: "author" | "timestamp") => {
     const sortedList = [...items];
     if (sortBy === "author") {
-      sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
-      sortedList.sort((itemA, itemB) => itemA.author.localeCompare(itemB.author));
+      if (sortedBy === "author") {
+        setSortedBy("other");
+        sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
+        sortedList.sort((itemA, itemB) => itemB.author.localeCompare(itemA.author));
+      } else {
+        setSortedBy("author");
+        sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
+        sortedList.sort((itemA, itemB) => itemA.author.localeCompare(itemB.author));
+      }
     }
     else {
-      sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
+      if (sortedBy === "date") {
+        setSortedBy("other");
+        sortedList.sort((itemA, itemB) => itemA.timestamp - itemB.timestamp);
+      }
+      else {
+        setSortedBy("date");
+        sortedList.sort((itemA, itemB) => itemB.timestamp - itemA.timestamp);        
+      }
     }
     setItems(sortedList);
   }
@@ -65,6 +80,7 @@ export function App() {
     currentItemKey: currentItemKey,
     data: data,
     items: items,
+    sortedBy: sortedBy,
     addItemToList: addItemToList,
     editItem: editItem,
     moveItem: moveItem,

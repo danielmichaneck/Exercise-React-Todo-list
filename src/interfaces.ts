@@ -22,6 +22,7 @@ export interface IItemListContext {
     currentItemKey: string | undefined;
     data: IData;
     items: IItem[];
+    sortedBy: "author" | "date" | "other";
     addItemToList: (item: IItem) => void;
     editItem: (id: string) => void;
     moveItem: (id: string, up: boolean) => void;

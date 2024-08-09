@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { ListItem, ListSideButtons } from "../components";
 import { useItemListContext } from "../hooks";
 import { ListSortButtons } from "../components/ListSortButtons";
@@ -21,7 +21,7 @@ export function ListPage(): ReactElement {
         <div>
             <h1>{context.data.nameOfItemPlural}</h1>
             <p>{listLengthText}</p>
-            <ListSortButtons disabled={context.items.length < 1} sort={context.sortList}/>
+            <ListSortButtons disabled={context.items.length < 1} sort={context.sortList} sortedBy={context.sortedBy}/>
         </div>
             {context.items.map((item) => (
                 <div key={item.id} className="list-row">
