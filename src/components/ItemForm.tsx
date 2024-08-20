@@ -49,7 +49,8 @@ export function ItemForm(props: ItemFormProps): ReactElement {
         e.preventDefault();
         checkForm();
         if (validForm) {
-            let timestamp = Date.now();
+            //let timestamp: number = Date.now();
+            let timestamp: number = 0;
             if (props.itemTimestamp !== undefined) {
                 timestamp = props.itemTimestamp;
             }
@@ -60,8 +61,8 @@ export function ItemForm(props: ItemFormProps): ReactElement {
             const submitItem: IItem = {
                 id: id,
                 author: itemAuthor,
-                name: itemName,
                 description: itemDescription,
+                name: itemName,
                 timestamp: timestamp
             };
             props.handleOnSubmit(submitItem);

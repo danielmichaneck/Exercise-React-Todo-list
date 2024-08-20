@@ -22,9 +22,9 @@ export function App() {
     result.forEach((item: IItem) => {
       items.push({
         id: item.id,
-        name: item.name,
         author: item.author,
         description: item.description,
+        name: item.name,
         timestamp: item.timestamp
       });
     });
@@ -37,7 +37,7 @@ export function App() {
     setItems((previousItems) => [item, ...previousItems]);
     setCurrentItemKey(item.id);
     console.log("Adding item to items: " + item.id)
-
+    console.log(JSON.stringify(item))
     fetch(url, {
       method: 'POST',
       headers: {  

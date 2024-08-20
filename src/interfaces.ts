@@ -13,8 +13,8 @@ export interface IData {
 export interface IItem {
     id: number;
     author: string;
-    name: string;
     description: string;
+    name: string;
     timestamp: number;
 }
 
