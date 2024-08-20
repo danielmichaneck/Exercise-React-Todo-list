@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from "./components";
 import { data, IItem, IItemListContext } from ".";
@@ -6,39 +6,56 @@ import { data, IItem, IItemListContext } from ".";
 export function App() {
   const navigate = useNavigate();
   const[items, setItems] = useState<IItem[]>([]);
-  const[currentItemKey, setCurrentItemKey] = useState<string>("");
+  const[currentItemKey, setCurrentItemKey] = useState<number>(0);
   const[sortedBy, setSortedBy] = useState<"author" | "date" | "other">("other");
 
+  useEffect(() => {
+    getDataFromDB();
+  }, [])
+
+  const url = "https://localhost:7108/api/TodoItems";
+
   async function getDataFromDB() {
-    const url = "https://localhost:7108/api/TodoItems";
     const response = await fetch(url);
-    const result = await response.json();
-    let items: IItem[];
-    result.forEach(item => {
+    const result: any = await response.json();
+    let items: IItem[] = [];
+    result.forEach((item: IItem) => {
       items.push({
         id: item.id,
         name: item.name,
-        
+        author: item.author,
+        description: item.description,
+        timestamp: item.timestamp
       });
     });
     console.log("data");
-    console.log(result);
+    console.log(items);
+    setItems(items);
   }
-
-  getDataFromDB();
 
   const addItemToList = (item: IItem ) => {
     setItems((previousItems) => [item, ...previousItems]);
     setCurrentItemKey(item.id);
     console.log("Adding item to items: " + item.id)
+
+    fetch(url, {
+      method: 'POST',
+      headers: {  
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+    .then((response) => response.json())
+    .catch(error => console.error('Unable to add item.', error));
   }
 
-  const editItem = (id: string ) => {
+  const editItem = (id: number ) => {
     setCurrentItemKey(id);
     navigate("/edit");
   }
 
-  const moveItem = (id: string, up: boolean) => {
+  const moveItem = (id: number, up: boolean) => {
     console.log("Moving item: " + id);
     const item = items.find((item) => item.id === id);
     const index = items.findIndex((item) => item.id === id);
@@ -56,7 +73,7 @@ export function App() {
     }
   }
 
-  const removeItemFromList = (id: string) => {
+  const removeItemFromList = (id: number) => {
     setItems((previousItems) => previousItems.filter((item) => item.id !== id));
     console.log("Removing item from items: " + id);
   }

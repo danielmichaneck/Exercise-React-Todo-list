@@ -11,7 +11,7 @@ export interface IData {
 }
 
 export interface IItem {
-    id: string;
+    id: number;
     author: string;
     name: string;
     description: string;
@@ -19,14 +19,14 @@ export interface IItem {
 }
 
 export interface IItemListContext {
-    currentItemKey: string | undefined;
+    currentItemKey: number | undefined;
     data: IData;
     items: IItem[];
     sortedBy: "author" | "date" | "other";
     addItemToList: (item: IItem) => void;
-    editItem: (id: string) => void;
-    moveItem: (id: string, up: boolean) => void;
-    removeItemFromList: (id: string) => void;
+    editItem: (id: number) => void;
+    moveItem: (id: number, up: boolean) => void;
+    removeItemFromList: (id: number) => void;
     sortList: (sortBy: "author" | "timestamp") => void;
     updateItemInList: (item: IItem) => void;
 }

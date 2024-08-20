@@ -3,7 +3,7 @@ import { IItem } from "..";
 
 interface ItemFormProps {
     addOrUpdate: "Add" | "Edit";
-    id?: string,
+    id?: number,
     itemName?: string;
     itemDescription?: string;
     itemAuthor?: string;
@@ -53,7 +53,7 @@ export function ItemForm(props: ItemFormProps): ReactElement {
             if (props.itemTimestamp !== undefined) {
                 timestamp = props.itemTimestamp;
             }
-            let id: string = itemName + timestamp;
+            let id: number = timestamp;
             if (props.id !== undefined) {
                 id = props.id;
             }
