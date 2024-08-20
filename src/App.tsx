@@ -5,9 +5,27 @@ import { data, IItem, IItemListContext } from ".";
 
 export function App() {
   const navigate = useNavigate();
-  const[items, setItems] = useState<IItem[]>(data.listSeed);
+  const[items, setItems] = useState<IItem[]>([]);
   const[currentItemKey, setCurrentItemKey] = useState<string>("");
   const[sortedBy, setSortedBy] = useState<"author" | "date" | "other">("other");
+
+  async function getDataFromDB() {
+    const url = "https://localhost:7108/api/TodoItems";
+    const response = await fetch(url);
+    const result = await response.json();
+    let items: IItem[];
+    result.forEach(item => {
+      items.push({
+        id: item.id,
+        name: item.name,
+        
+      });
+    });
+    console.log("data");
+    console.log(result);
+  }
+
+  getDataFromDB();
 
   const addItemToList = (item: IItem ) => {
     setItems((previousItems) => [item, ...previousItems]);
