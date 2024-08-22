@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useItemListContext } from "../hooks";
 import { ItemForm } from "../components/ItemForm";
-import { Link } from "react-router-dom";
 
 export function EditPage(): ReactElement {
     const context = useItemListContext();

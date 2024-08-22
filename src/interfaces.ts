@@ -18,6 +18,14 @@ export interface IItem {
     timestamp: number;
 }
 
+export interface IItemDTO {
+    id: string;
+    author: string;
+    description: string;
+    name: string;
+    timestamp: string;
+}
+
 export interface IItemListContext {
     currentItemKey: number | undefined;
     data: IData;

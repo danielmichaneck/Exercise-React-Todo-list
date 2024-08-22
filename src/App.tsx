@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from "./components";
-import { data, IItem, IItemListContext } from ".";
+import { data, IItem, IItemDTO, IItemListContext } from ".";
 
 export function App() {
   const navigate = useNavigate();
@@ -19,13 +19,13 @@ export function App() {
     const response = await fetch(url);
     const result: any = await response.json();
     let items: IItem[] = [];
-    result.forEach((item: IItem) => {
+    result.forEach((item: IItemDTO) => {
       items.push({
-        id: item.id,
+        id: parseInt(item.id),
         author: item.author,
         description: item.description,
         name: item.name,
-        timestamp: item.timestamp
+        timestamp: parseInt(item.timestamp)
       });
     });
     console.log("data");
@@ -34,19 +34,28 @@ export function App() {
   }
 
   const addItemToList = (item: IItem ) => {
-    setItems((previousItems) => [item, ...previousItems]);
     setCurrentItemKey(item.id);
     console.log("Adding item to items: " + item.id)
-    console.log(JSON.stringify(item))
+
+    const itemDTO = {
+      id: item.id.toString(),
+      author: item.author,
+      description: item.description,
+      name: item.name,
+      timestamp: item.timestamp.toString()
+    }
+
+    console.log(JSON.stringify(itemDTO));
+
     fetch(url, {
       method: 'POST',
       headers: {  
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(itemDTO)
     })
-    .then((response) => response.json())
+    .then(() => getDataFromDB())
     .catch(error => console.error('Unable to add item.', error));
   }
 
@@ -74,8 +83,16 @@ export function App() {
   }
 
   const removeItemFromList = (id: number) => {
-    setItems((previousItems) => previousItems.filter((item) => item.id !== id));
+    //setItems((previousItems) => previousItems.filter((item) => item.id !== id));
     console.log("Removing item from items: " + id);
+    fetch(url + "/" + id, {
+      method: 'DELETE',
+      headers: {  
+        'Accept': '*/*',
+      },
+    })
+    .then(() => getDataFromDB())
+    .catch(error => console.error('Unable to remove item.', error));
   }
 
   const sortList = (sortBy: "author" | "timestamp") => {

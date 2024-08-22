@@ -49,8 +49,7 @@ export function ItemForm(props: ItemFormProps): ReactElement {
         e.preventDefault();
         checkForm();
         if (validForm) {
-            //let timestamp: number = Date.now();
-            let timestamp: number = 0;
+            let timestamp: number = Math.floor(Date.now() / 1000);
             if (props.itemTimestamp !== undefined) {
                 timestamp = props.itemTimestamp;
             }
